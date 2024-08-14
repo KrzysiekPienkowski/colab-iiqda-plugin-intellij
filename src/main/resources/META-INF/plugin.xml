@@ -1,0 +1,56 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.colab.plugin.iiqda.iiqda-intellij</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>IIQDA Pluging</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="krzysztof.pienkowski@ventum.com" url="https://www.ventum-consulting.com/">Ventum</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>Intellij plugin for iiq allowing to import and deploy objects from IIQ</description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+
+    <actions>
+
+        <group
+                id="com.colab.iiqdaintellij.action.DeployArtifact"
+                class="com.colab.iiqdaintellij.actions.DeployArtifactActionGroup"
+                text="Deploy Artifact"
+                popup="true">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="EditorPopupMenu2"/>
+        </group>
+        <group
+                id="com.colab.iiqdaintellij.action.CompareWithRemote"
+                class="com.colab.iiqdaintellij.actions.CompareArtifactActionGroup"
+                text="Compare With Remote"
+                popup="true">
+            <add-to-group group-id="EditorPopupMenu" anchor="after"
+                          relative-to-action="com.ventum.iiqdaintellij.action.DeployArtifact"/>
+        </group>
+
+
+        <group
+                id="com.colab.iiqdaintellij.action.CustomDefaultActionGroupProject"
+                class="com.colab.iiqdaintellij.actions.ImportArtifactActionGroup"
+                text="Import Artifact"
+                popup="true">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after"
+                          relative-to-action="ProjectViewPopupMenuRefactoringGroup"/>
+        </group>
+
+    </actions>
+</idea-plugin>

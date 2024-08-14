@@ -1,4 +1,4 @@
-package com.ventum.iiqdaintellij.Exceptions;
+package com.colab.iiqdaintellij.Exceptions;
 
 public class ConnectionException extends Exception {
 
